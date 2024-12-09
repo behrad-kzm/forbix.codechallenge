@@ -1,11 +1,9 @@
 
-# Project Name
+# Forbix Code Challenge
 
 ## Description
 
-A brief description of your project goes here. For example:
-
-> This is a backend application built with NestJS for managing users and companies. It uses MySQL as the database and provides various services for handling users, companies, and their interactions.
+ This is a backend application built with NestJS for managing users and companies. It uses MySQL as the database and provides various services for handling users, companies, and their interactions.
 
 ## Prerequisites
 
@@ -33,14 +31,7 @@ This file should contain the necessary environment variables for connecting to t
 
 ## Setup
 
-### 1. Clone the repository
-
-```bash
-git clone <repository-url>
-cd <project-folder>
-```
-
-### 2. Install dependencies
+### 1. Install dependencies
 
 Run the following command to install the required Node.js packages:
 
@@ -48,19 +39,19 @@ Run the following command to install the required Node.js packages:
 npm install
 ```
 
-### 3. Setup Docker (optional)
+### 2. Setup Docker (optional)
 
 To run the project with Docker and MySQL, you can use the `docker-compose.yml` configuration. This will set up the MySQL database and API application in containers.
 
 - **Build and start the containers**:
 
 ```bash
-docker-compose up --build
+docker-compose up -d
 ```
 
 This will run the application and MySQL container in the same network, with environment variables injected from the `.env` file.
 
-### 4. Build the project
+### 3. Build the project
 
 Build the NestJS project with:
 
@@ -68,7 +59,7 @@ Build the NestJS project with:
 nest build
 ```
 
-### 5. Running the application
+### 4. Running the application
 
 To start the application, run:
 
@@ -78,15 +69,13 @@ ENV_PATH=.env npm run start
 
 This will start the application in development mode, using the environment variables defined in the `.env` file.
 
-### 6. Running Unit Tests
+### 5. Running Unit Tests
 
 To run the unit tests, use the following command:
 
 ```bash
-nest build && nest build && ENV_PATH=.env npm run test:unit
+nest build && ENV_PATH=.env npm run test:unit
 ```
-
-This will build the application twice (necessary for testing) and run the unit tests defined in the project.
 
 ## Project Structure
 
