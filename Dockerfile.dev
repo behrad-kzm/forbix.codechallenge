@@ -14,3 +14,4 @@ RUN sed -i 's/\r//g' /opt/startup.dev.sh
 
 WORKDIR /usr/src/app
 RUN npm run build
+CMD [ "npm", "run", "start" ]

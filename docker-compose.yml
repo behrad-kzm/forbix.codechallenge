@@ -3,7 +3,9 @@ version: '3.8'
 services:
   mysql:
     container_name: mysql
-    image: mysql:8.0
+    image: mysql:8.0.40
+    restart: always
+    command: --authentication-policy=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: exam
@@ -21,12 +23,16 @@ services:
       dockerfile: Dockerfile.dev
     env_file:
       - .env
+    restart: always
     depends_on:
       - mysql
     ports:
       - "3000:3000"
     networks:
       - app-network
+    command: /bin/bash /opt/startup.dev.sh
+    volumes:
+      - .env:/usr/src/app/.env
 
 networks:
   app-network:
