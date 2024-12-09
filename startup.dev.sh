@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ "$1" = "--test-only" ]; then
-  ENV_FILE="environments/test.development.env"
+  ENV_FILE="test.env"
 else
-  ENV_FILE="environments/development.env"
+  ENV_FILE=".env"
 fi
 
 source $ENV_FILE
