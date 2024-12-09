@@ -1,73 +1,116 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Project Name
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A brief description of your project goes here. For example:
 
-## Installation
+> This is a backend application built with NestJS for managing users and companies. It uses MySQL as the database and provides various services for handling users, companies, and their interactions.
 
-```bash
-$ npm install
+## Prerequisites
+
+Before getting started, make sure you have the following tools installed:
+
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [NestJS CLI](https://docs.nestjs.com/)
+
+## Environment Variables
+
+This project uses a `.env` file to manage configuration. Create a `.env` file at the root of the project with the following content:
+
+```env
+DATABASE_TYPE=mysql
+DATABASE_HOST_MASTER=mysql
+DATABASE_PORT=3306
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=123456
+DATABASE_NAME=exam
 ```
 
-## Running the app
+This file should contain the necessary environment variables for connecting to the MySQL database and other configurations used by the application.
+
+## Setup
+
+### 1. Clone the repository
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone <repository-url>
+cd <project-folder>
 ```
 
-## Test
+### 2. Install dependencies
+
+Run the following command to install the required Node.js packages:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm install
 ```
 
-## Support
+### 3. Setup Docker (optional)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+To run the project with Docker and MySQL, you can use the `docker-compose.yml` configuration. This will set up the MySQL database and API application in containers.
 
-## Stay in touch
+- **Build and start the containers**:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+docker-compose up --build
+```
+
+This will run the application and MySQL container in the same network, with environment variables injected from the `.env` file.
+
+### 4. Build the project
+
+Build the NestJS project with:
+
+```bash
+nest build
+```
+
+### 5. Running the application
+
+To start the application, run:
+
+```bash
+ENV_PATH=.env npm run start
+```
+
+This will start the application in development mode, using the environment variables defined in the `.env` file.
+
+### 6. Running Unit Tests
+
+To run the unit tests, use the following command:
+
+```bash
+nest build && nest build && ENV_PATH=.env npm run test:unit
+```
+
+This will build the application twice (necessary for testing) and run the unit tests defined in the project.
+
+## Project Structure
+
+- `src/`: Contains all the application logic, including modules, controllers, services, and entities.
+- `src/company/`: Contains company-related logic (services, controllers, etc.).
+- `src/user/`: Contains user-related logic.
+- `src/database/`: Contains the database configuration and migrations.
+- `src/utils/`: Contains utility functions, decorators, and interceptors.
+- `src/config/`: Configuration files for the app (e.g., database, app, and auth configurations).
+
+## Docker Configuration
+
+The project includes Docker files for development and production environments:
+
+- **Dockerfile.dev**: The Dockerfile used to build the development environment for the application.
+- **Dockerfile.prod**: The Dockerfile used to build the production environment.
+- **docker-compose.yml**: Configuration for setting up the application and MySQL container in a Docker network.
+
+## Troubleshooting
+
+- **"Environment variable not found"**: Ensure that the `.env` file exists in the root directory and has the correct environment variables configured.
+- **MySQL connection issues**: Verify that the MySQL container is running and accessible. Check the logs using `docker-compose logs mysql`.
+- **Build issues**: If you encounter issues with the build, try deleting the `node_modules` directory and re-running `npm install`.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Include your license information here, if applicable.
